@@ -1,0 +1,20 @@
+# para usar acortar comandos
+alias py='python3'
+alias cl='clear'
+alias ran='ranger'
+
+# para usar exa
+alias lx='exa -lh --no-time --no-user'
+alias lz='exa -lha'
+alias lt='exa -lT --level=2'
+alias ls='exa -l'
+alias lsa='exa -la'
+
+# para acortar tree
+alias tr='tree -L 2'
+alias tr-d='tree -d -L 2'
+alias tr-f='tree -f -L 2'
+alias tr-a='tree -a -L 2'
+
+# alias para kitty terminal
+alias icat="kitty +kitten icat"
