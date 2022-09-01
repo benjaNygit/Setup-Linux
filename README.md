@@ -22,10 +22,36 @@ Un listado de los paquetes instalas atraves del gestor de paquetes de Ubuntu apk
 + glow
 + tmux
 
+Para usar la clipbord se instalan dos paquetes.
++ xclip
++ xsel
+
 ## Versiones de los paquetes
 Algunos paquetes requieren de sierta versión para ser parte del setup.
 + node => 16.16.0
 + neovim => 0.7.0
+
+## Comandos para generar ssh en github
+Los siguientes pasos son para generar el token que se conecta con github para no colocar
+la contraseña cada vez que se interactue con el repositior en la nube.
+
+Para generar el token.
+~~~
+ssh-keygen -t rsa -b 4096 -C "correo"
+~~~
+Pedira una ruta, precionar enter sin colocar nada.
+Luego pedira una contraseña, se puede dejar vacio, pero debes recordar la contraseña de poner una.
+
+Comando para verificar que todo va bien.
+~~~
+eval $(ssh-agent -s)
+~~~
+Mostrara como resultado si todo esta bien *Agent pid "y un numero"*.
+
+Finalmente para que el token funcione, aparte de colocar la clave publica el github.
+~~~
+ssh-add ~/.ssh/id_rsa
+~~~
 
 ## Terminal
 Para Ubuntu uso la terminal kitty.
@@ -66,8 +92,9 @@ Puede verse el valor de TERM por cada terminal con el siguiente comando.
 ~~~
 echo $TERM
 ~~~
-~~~
 
+Quitar xterm-kitty si no se usa esta terminal.
+~~~
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color|xterm-kitty|screen) color_prompt=yes;;
