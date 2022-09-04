@@ -100,6 +100,18 @@ case "$TERM" in
     xterm-color|*-256color|xterm-kitty|screen) color_prompt=yes;;
 esac
 ~~~
+## Tmux
+Este paquete tiene su propia configuración. En el archivo .tmux.conf y va en ~.
 
+Para usar la configuracion de tmux es necesario instalar un repositorio para usar plugins.
+
+~~~
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~~~
+Luego precionar control + z + I. En mi caso cambie la teca Leader de tmux.
+
+Lista de plugins para tmux
+--------------------------
++ [tmux-battery](https://github.com/tmux-plugins/tmux-battery)
 
 
