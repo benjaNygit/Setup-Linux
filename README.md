@@ -113,5 +113,7 @@ Luego precionar control + z + I. En mi caso cambie la teca Leader de tmux.
 Lista de plugins para tmux
 --------------------------
 + [tmux-battery](https://github.com/tmux-plugins/tmux-battery)
++ [tmux-cpu](https://github.com/tmux-plugins/tmux-cpu)
++ [tmux-online-stattus](https://github.com/tmux-plugins/tmux-online-status)
 
 
