@@ -134,3 +134,40 @@ Despues de reiniciar.
 sudo pacman -S xorg xorg-server xorg-init mesa mesa-demos
 sudp pacman -S xf86-video-vesa
 sudp pacman -S xf86-video-intel intel-ucode
+~~~
+Paquetes para el sistema.
+~~~
+# para audio
+sudo pacman -S pulseaudio
+sudo pacman -S pavucontrol
+sudo pacman -S pamixer
+
+# para trasnparencia
+sudo pacman -S picom
+
+# para multiples monitores
+sudo pacman -S arandr
+~~~
+## Instalación de Qtile
+Dependencias.
+~~~
+# gestor de sesiones
+sudo pacman -S lightdm lightdm-gtg-greeter
+
+# configurar archivo /etc/lightdm/lightdm.conf
+nvim /etc/lightdm/lightdm.conf
+
+# editar linea greeter-session=
+# y poner lightdm-gtk-greeter
+
+# habilitar lightdm
+sudo systemctl enable lightdm.service
+~~~
+Instalar Qtile.
+~~~
+sudo pacman -S qtile
+
+# terminal de qtile
+sudo pacman -S xterm
+~~~
+
