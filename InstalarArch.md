@@ -7,6 +7,13 @@ loadkeys la-latin1
 Conectarse a internet.
 ~~~
 iwctl
+
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect red
+station wlan0 show
+exit
 ~~~
 Verificar si el sistema es UEFI o BIOS
 ~~~
