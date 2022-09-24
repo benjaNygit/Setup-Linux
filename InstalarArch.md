@@ -69,7 +69,8 @@ pacman -S networknanager
 systemctl enable NetworkManagero
 
 # paquetes
-pacman -S neovim sudo 
+pacman -S neovim
+pacman -S sudo
 pacman -S ifplugd
 pacman -S openssh
 pacman -S xf86-input-synaptics
