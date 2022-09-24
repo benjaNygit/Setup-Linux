@@ -59,9 +59,9 @@ Generar archivos fstab.
 genfstab -U >> /mnt/etc/fstab
 ~~~
 Cambiar al sistema o moverce dentro del sistema.
-~~
+~~~
 arch-chroot /mnt
-~~
+~~~
 Instalación de paquetes.
 ~~~
 # internet
