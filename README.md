@@ -31,6 +31,31 @@ Algunos paquetes requieren de sierta versión para ser parte del setup.
 + node => 16.16.0
 + neovim => 0.7.0
 
+### Como instalar node
+Este paquete en Ubuntu esta desactualizado, por lo que para instalar una version mas nueva
+se debe hacer diferente.
+
+Primero ejecutamos este comando para instalar nvm.
+~~~
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+~~~
+Luego permitimos su uso para nuestro usuario.
+~~~
+source ~/.profile
+~~~
+Mostramos todas las versiones de node disponibles.
+~~~
+nvm ls-remote
+~~~
+Inslatamos la version que queramos.
+~~~
+nvm install 16.17.1
+~~~
+Para desinstalar node primero desactivalo, luego desinstala.
+~~~
+nvm deactivate
+nvm uninstall v16.17.1
+~~~
 ## Comandos para generar ssh en github
 Los siguientes pasos son para generar el token que se conecta con github para no colocar
 la contraseña cada vez que se interactue con el repositior en la nube.
