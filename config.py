@@ -88,15 +88,15 @@ for i in groups:
     )
 
 layouts = [
-    layout.Floating(border_focus='#0000ff'),
     layout.Columns(border_focus_stack=["#0000ff", "#0000ff"], border_width=3, border_normal='#000000', border_focus='#0000ff', margin=3),
     # layout.Max(),
     layout.Tile(margin=2, border_width=3),
-    # layout.Stack(num_stacks=2),
+    layout.Floating(border_focus='#0000ff'),
+    # layout.Stack(num_stacks=2, border_focus='#0000ff', border_width=3, margin=3),
     # layout.Zoomy(),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(border_focus='#0000ff', border_width=3, margin=3),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.TreeTab(),
