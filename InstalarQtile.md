@@ -45,3 +45,32 @@ setxkbmap latam
 Este comnado debe ser ejecutado cada vez que Qtile se inicie.
 Lo bueno es que mi configuración trae un fragmento de codigo que ejecuta comandos
 de una lista cada que Qtile se inicia.
+
+---
+## Rofi
+Rofi es un programa que permite abrir programas. Esta configurado en mi Qtile.
+Para instalar.
+~~~
+sudo apt install rofi
+~~~
+Para ejecutar.
+~~~
+rofi -show run
+rofi -show window
+~~~
+Para cambiar de thema.
+~~~
+rofi-theme-selector
+~~~
+---
+## Monitores
+Si conectas otro monitor no aparecera nada.
+Debes configurarlo con un comando. Pero hay un programa visual que generara
+el comando solo. Y uno solamente debe ejecutar ese comando cuando.
+
+Instalar programas.
+~~
+sudo apt install arandr
+~~
+En la carpeta monitores estan los comandos para los monitores que yo uso.
+
