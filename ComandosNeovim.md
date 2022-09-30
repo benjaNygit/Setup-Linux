@@ -24,7 +24,7 @@ Para desplazarce y editar ficheros.
 
 Manipulación de ficheros.
 |COMANDO|SIGNIFICADO|
-|-------------------|
+|-------|-----------|
 |:w	|Grabar los cambios.
 |:w ...	|Grabar como ...
 |:q	|Salir
@@ -36,7 +36,7 @@ Manipulación de ficheros.
 
 Moverce entre ficheros abiertos.
 |COMANDO|SIGNIFICADO|
-|-------------------|
+|-------|-----------|
 |:bn	|Siguiente fichero.
 |:bp	|Anterior fichero.
 |:bd	|Cerrar fichero actual.
