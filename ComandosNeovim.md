@@ -23,8 +23,8 @@ Para desplazarce y editar ficheros.
 |CTRL+R	|Rehacer acción.
 
 Manipulación de ficheros.
-|COMANDO|SIGNIFICADO
-|-------------------
+|COMANDO|SIGNIFICADO|
+|-------------------|
 |:w	|Grabar los cambios.
 |:w ...	|Grabar como ...
 |:q	|Salir
@@ -35,8 +35,8 @@ Manipulación de ficheros.
 |:e ...	|Abrir fichero.
 
 Moverce entre ficheros abiertos.
-|COMANDO|SIGNIFICADO
-|-------------------
+|COMANDO|SIGNIFICADO|
+|-------------------|
 |:bn	|Siguiente fichero.
 |:bp	|Anterior fichero.
 |:bd	|Cerrar fichero actual.
