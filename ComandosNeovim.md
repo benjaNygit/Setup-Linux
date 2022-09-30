@@ -1,9 +1,9 @@
 # Apuntes sobre los comandos de NeoVim
 Listado de comandos para usar en el modo comando.
-```
+
 Para desplazarce y editar ficheros.
-|COMANDO|SIGNIFICADO
-|-------|-----------
+|COMANDO|SIGNIFICADO|
+|-------|-----------|
 |h	|Mover cursor a la izquierda.
 |l	|Mover cursor a la derecha.
 |j	|Mover cursor hacia abajo.
@@ -21,7 +21,6 @@ Para desplazarce y editar ficheros.
 |J	|Junta linea actual con la siguiente.
 |u	|Deshacer acción.
 |CTRL+R	|Rehacer acción.
-```
 
 Manipulación de ficheros.
 |COMANDO|SIGNIFICADO
