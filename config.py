@@ -4,7 +4,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 import os
-cmd = ["setxkbmap latam", "feh --bg-fill ~/Imágenes/Fondos\ de\ escritorio/dibujo-bosque-minimalista.jpg"]
+cmd = ["setxkbmap latam", "feh --bg-fill ~/Imágenes/Fondos\ de\ escritorio/dibujo-bosque-minimalista.jpg", "picom &"]
 for x in cmd:
     os.system(x)
 
@@ -56,7 +56,7 @@ keys = [
     Key([mod], "f", lazy.spawn("firefox"), desc="Open firefox"),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -6%"), desc="turn up the volumen"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +6%"), desc="volumen down"),
-    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ toggle"), desc="mute"),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ 0"), desc="mute"),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10"), desc="turn up brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10-"), desc="brightness down"),
 ]
@@ -88,15 +88,15 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#0000ff", "#0000ff"], border_width=3, border_normal='#000000', border_focus='#0000ff', margin=3),
+    layout.Columns(border_focus_stack=["#0000ff", "#0000ff"], border_width=3, border_normal='#000000', border_focus='#ff0000', margin=3),
     # layout.Max(),
     layout.Tile(margin=2, border_width=3),
-    layout.Floating(border_focus='#0000ff'),
+    layout.Floating(border_focus='#ff0000', border_width=3, match=3),
     # layout.Stack(num_stacks=2, border_focus='#0000ff', border_width=3, margin=3),
     # layout.Zoomy(),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(border_focus='#0000ff', border_width=3, margin=3),
+    layout.MonadTall(border_focus='#ff0000', border_width=3, margin=3),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.TreeTab(),
@@ -104,8 +104,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="mononoki",
-    fontsize=8,
+    font="mononoki Nerd Font",
+    fontsize=10,
     padding=2,
 )
 extension_defaults = widget_defaults.copy()
@@ -117,8 +117,8 @@ screens = [
                 widget.CurrentLayout(),
                 widget.CurrentScreen(), widget.Sep(),
                 widget.GroupBox(highlight_method='line', background='#483D8B', block_highlight_text_color='#ff0000', borderwidth=1, fontsize=10, inactive='#000000'), widget.Sep(),
-                widget.WindowName(),
-                widget.CheckUpdates(distro='Ubuntu', no_update_string='No updates'),
+                widget.WindowName(),widget.Sep(),
+                widget.CheckUpdates(distro='Ubuntu', no_update_string=' 0', display_format='{updates}', fontsize=12),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -126,26 +126,27 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.OpenWeather(location='Santiago, CL', background='#0000ff', fontsize=10, language='es'),
-                widget.Notify(),
-                widget.Net(),
+                widget.Net(prefix='M'),
                 widget.ThermalSensor(background='#0000ff', fontsize=10),
-                widget.Memory(measure_mem='G'),
+                widget.Memory(measure_mem='M'), widget.Sep(),
                 widget.CPU(),
-                widget.Volume(background='#ffffff', foreground='#000000', fontsize=10),
+                widget.TextBox(text='墳', fontsize=15, background='#ffffff', foreground='#000000'),
+                widget.Volume(background='#ffffff', foreground='#000000', fontsize=12),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.Battery(
                     background='#0000ff',
-                    fontsize=10,
+                    fontsize=15,
                     format='{char} {percent:2.0%} {hour:d}:{min:02d}',
                     low_background='#ff0000',
                     low_foreground='ffffff',
                     low_percentage=0.16,
                     notify_below=0.2,
                 ),
-                widget.QuickExit(),
+                widget.QuickExit(background='#808080'),
             ],
             16,
-            margin=2,
+            margin=0,
+            padding=[0,0,0,0],
         ),
     ),
     Screen(
