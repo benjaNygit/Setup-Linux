@@ -105,3 +105,44 @@ Copiar y pegar.
 |yy	|Copia la linea actual.
 |d,x,c	|Cortar.
 
+Comandos para pestañas.
+|COMANDO|EQUIVALENTE|
+|-------|-----------|
+|:tabnew|Crea una pestaña vacia.
+|:tabedit ...	|Abre ... en una nueva pestaña.
+|:tabclose	|Cierra la pestaña actual.
+|:tabnext	|Saltar a la siguiente pestaña.
+|:tabprev	|Saltar a la anterior pestaña.
+|gt	|Saltar a la siguiente pestaña.
+|gT	|Saltar a la anterior pestaña.
+|:tabs	|Lista las pestañas abiertas.
+
+Comandos para ventanas.
+|COMANDO|EQUIVALENTE|
+|-------|-----------|
+|:split ...	|Partir la pantalla horizontalmente.
+|:vsplit ...	|Partir la pantalla vertivalmente.
+|:close	|Cerrar ventana actual.
+|:only	|Hacer la ventana actual la unica.
+
+Comandos para buffers
+|COMANDO|EQUIVALENTE|
+|-------|-----------|
+|:buffers	|Ver listado de buffers abiertos.
+|:buffer ..	|Abrir buffer numero ..
+|:bn	|Ir al siguiente buffer.
+|:bp	|Ir al buffer siguiente.
+|:bt	|Ir al primer buffer.
+|:bl	|Ir al ultimo buffer.
+|:bd	|Cerrar buffer actual.
+
+Comandos para pregado de codigo.
+|COMANDO|EQUIVALENTE|
+|-------|-----------|
+|zf	|Plegar texto seleccionado.
+|za	|Abrir plegado.
+|zR	|Desplegar todos los pliegues del fichero.
+|zd	|Eliminar pliegue.
+|zE	|Eliminar todos los pliegues del fichero.
+|zc	|Cerrar un pliegue.
+
