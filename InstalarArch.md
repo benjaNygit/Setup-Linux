@@ -56,7 +56,7 @@ pacstrap /mnt base base-devel linux linux-firmware
 ~~~
 Generar archivos fstab.
 ~~~
-genfstab -U >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 ~~~
 Cambiar al sistema o moverce dentro del sistema.
 ~~~
