@@ -22,6 +22,7 @@ ls /sys/firmware/efi/efivars
 ~~~
 Relog del sistema.
 ~~~
+timedatectl status
 timedatectl set-ntp true
 ~~~
 Comandos para particiones.
@@ -39,7 +40,7 @@ swapon /dev/sdX2
 Para montar las particiones.
 ~~~
 # para la partición raiz /
-mount /dev/sdX1 /mnt
+mount /dev/sdXn /mnt
 
 # crear ficheros para efi y home
 mkdir /mnt/boot
@@ -50,11 +51,12 @@ mkdir /mnt/home
 mount /dev/sdXn /mnt/boot
 mount /dev/sdXn /mnt/home
 ~~~
-Instación.
+Instación. Esto instalara lo basico para el funcionamiento del sistema. Incluido el kernel.
 ~~~
-pacstrap /mnt base base-devel linux linux-firmware
+pacstrap -K /mnt base base-devel linux linux-firmware linux-headers
 ~~~
-Generar archivos fstab.
+Generar archivos fstab. Si este da error, las particiones estan mal montadas.
+Para comprobar que este bien, listar /mnt/etc/fstab y compribar si lo que dice esta bien.
 ~~~
 genfstab -U /mnt >> /mnt/etc/fstab
 ~~~
@@ -62,25 +64,31 @@ Cambiar al sistema o moverce dentro del sistema.
 ~~~
 arch-chroot /mnt
 ~~~
-Instalación de paquetes.
+## Instalación de paquetes.
 ~~~
-# internet
-pacman -S networknanager
-systemctl enable NetworkManagero
+# Como se instala.
+pacman -S <paquete>
+~~~
+|Paquete|Función|
+|-------|-------|
+|networkmanager|Conección a internet, por consola.|
+|neovim        |Editor de texto|
+|ifplugd       |Conecta y desconecta de forma automatica internet en ethernet|
+|openssh       |Conección entre computadoras de forma encriptada|
+|xf86-input-synaptics|Habilita el touchpad de los notebooks|
+|mkinitcpio    |Dependencia del paquete linux|
+|sudo          |Paquete que permite ejecutar comandos en modo administrador|
 
-# paquetes
-pacman -S neovim
-pacman -S sudo
-pacman -S ifplugd
-pacman -S openssh
-pacman -S xf86-input-synaptics
-pacman -S linux-headers
-pacman -S mkinitcpio
+Habilitar paquetes.
+~~~
+systemctl enable NetworkManager
+systemctl enable sshd
+~~~
+Instalar estos paquetes para el arranque del sistema, ademas del dualbot.
+~~~
 pacman -S grub
 pacman -S efibootmgr
 pacman -S os-prober
-
-systemctl enable sshd
 ~~~
 Configuración del sistema.
 ~~~
@@ -91,21 +99,20 @@ ln -sf /urs/share/zoneinfo/America/Santiago /etc/localtime
 hwclock --systohc
 
 # idioma
+# descomentar idiomas deceados.
 nvim /etc/locale.gen
-touch /etc/locale.conf
-LANG=es_ES.UTF-8 >> /etc/locale.conf
-touch /etc/vconsole.conf
-KEYMAP=la-latin1 >> /etc/vconsole.conf
+locale-gen
+echo "LANG=es_ES.UTF-8" > /etc/locale.conf
+echo "KEYMAP=la-latin1" > /etc/vconsole.conf
 
 # nombre pc
-touch /etc/hostname
-nombre >> /etc/hostname
+echo "<nombrePC>" > /etc/hostname
 
 nvim /etc/hosts
 # escribir
 127.0.0.1	localhost
 ::1		localhost
-127.0.1.1	nombre.localdomain	nombre
+127.0.1.1	nombrePC.localdomain	nombrePC
 ~~~
 Crear usuario.
 ~~~
@@ -118,6 +125,10 @@ passwd user
 
 # agregar a grupo sudo
 usermod -aG sudo nombre
+
+# O agregarlo manualmente en /etc/sudoers
+# debajo de root
+user ALL=(ALL) ALL
 ~~~
 Grub Install.
 ~~~
@@ -137,25 +148,26 @@ Reiniciar
 reboot
 ~~~
 Despues de reiniciar.
-~~~
-# para herramientas graficas
-sudo pacman -S xorg xorg-server xorg-init mesa mesa-demos
-sudp pacman -S xf86-video-vesa
-sudp pacman -S xf86-video-intel intel-ucode
-~~~
+## Paquetes para herramientas graficas
+|Paquete|Función|
+|-------|-------|
+|xorg            |Graficos|
+|xorg-server     |Graficos|
+|xorg-init       |Permite ejecutar comandos antes de iniciar el entorno grafico (~/.xprofile)|
+|mesa            |Graficos|
+|mesa-demos      |Graficos|
+|xf86-video-vesa |
+|xf86-video-intel|
+|intel-ucode     |
+
 Paquetes para el sistema.
-~~~
-# para audio
-sudo pacman -S pulseaudio
-sudo pacman -S pavucontrol
-sudo pacman -S pamixer
-
-# para trasnparencia
-sudo pacman -S picom
-
-# para multiples monitores
-sudo pacman -S arandr
-~~~
+|Paquete|Función|
+|-------|-------|
+|pulseaudio |Para tener audio|
+|pavucontrol|Para controlar el volumen|
+|pamixer    |
+|picom      |Para transparencia|
+|arandr     |Configurar multiples monitores|
 ## Instalación de Qtile
 Dependencias.
 ~~~
@@ -170,12 +182,16 @@ nvim /etc/lightdm/lightdm.conf
 
 # habilitar lightdm
 sudo systemctl enable lightdm.service
+
+# O usar gdm, el gestor de sesiones de gnome
+sudo pacman -S gdm
 ~~~
 Instalar Qtile.
 ~~~
 sudo pacman -S qtile
 
-# terminal de qtile
+# terminal de qtile, aunque puedes instalar cualquiera en vez de esta.
 sudo pacman -S xterm
+sudo pacman -S alacritty
 ~~~
 
