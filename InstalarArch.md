@@ -186,6 +186,10 @@ sudo systemctl enable lightdm.service
 # O usar gdm, el gestor de sesiones de gnome
 sudo pacman -S gdm
 systemctl enable gdm.service
+
+# para configurar el entorno de gnome
+sudo pacman -S gnome-control-center
+sudo pacman -S gnome-tweak-tools
 ~~~
 Instalar Qtile.
 ~~~
