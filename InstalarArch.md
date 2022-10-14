@@ -153,7 +153,7 @@ Despues de reiniciar.
 |-------|-------|
 |xorg            |Graficos|
 |xorg-server     |Graficos|
-|xorg-init       |Permite ejecutar comandos antes de iniciar el entorno grafico (~/.xprofile)|
+|xorg-xinit       |Permite ejecutar comandos antes de iniciar el entorno grafico (~/.xprofile)|
 |mesa            |Graficos|
 |mesa-demos      |Graficos|
 |xf86-video-vesa |
@@ -185,6 +185,7 @@ sudo systemctl enable lightdm.service
 
 # O usar gdm, el gestor de sesiones de gnome
 sudo pacman -S gdm
+systemctl enable gdm.service
 ~~~
 Instalar Qtile.
 ~~~
